@@ -1,0 +1,199 @@
+﻿<Window x:Class="Pogoda.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pogoda"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="600" Width="965" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True" MouseDown="Window_MouseDown" Background="Transparent"
+        >
+
+
+    <Border Background="#383647"
+            CornerRadius="20">
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,2,0,-2" Width="955">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Ellipse Fill="#FFF73A3A"  Height="18" Width="18" HorizontalAlignment="Right" Grid.Column="1" Margin="0,6,10,51" RenderTransformOrigin="0.425,2.125" MouseLeftButtonDown="closeApp" ToolTip="Zamknij" Grid.Row="1"/>
+            <Ellipse Fill="#FFF7F754"  Height="18" Width="18" HorizontalAlignment="Right" Grid.Column="1" Margin="0,6,35,51" RenderTransformOrigin="0.425,2.125" MouseLeftButtonDown="minimalizeApp" ToolTip="Zminimalizuj" Grid.Row="1"/>
+
+            <TextBlock Text="Pogoda"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="30" FontFamily="Microsoft Sans Serif" Margin="46,18,40,0" Grid.Row="1" Opacity="0.7" FontWeight="Bold" Height="57" Width="114">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <Grid Grid.Column="1" Margin="13,23,391,28" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="109*"/>
+                    <ColumnDefinition Width="110*"/>
+                    <ColumnDefinition Width="97*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TBCity" HorizontalAlignment="Left" TextWrapping="Wrap" Width="241" FontFamily="Microsoft Sans Serif" Opacity="0.5" BorderThickness="0" ClipToBounds="True" VerticalAlignment="Center" Padding="5" SelectionOpacity="0.1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-8,0,0,0"/>
+                <Button x:Name="btnSearch" Content="Szukaj" HorizontalAlignment="Left" Margin="112,0,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click" FontFamily="Microsoft Sans Serif" Height="24" Opacity="0.5" BorderThickness="0" Grid.Column="1" Grid.RowSpan="3" FontWeight="Bold" Grid.ColumnSpan="2"/>
+            </Grid>
+            <Label x:Name="labCondition" HorizontalAlignment="Left" Margin="219,228,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="44" Width="251" Foreground="White" Opacity="0.7" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Content="" Background="#FF4F4D5C"/>
+            <Label Content="TEMPERATURA" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" FontSize="25" Opacity="0.6" Width="214" HorizontalContentAlignment="Center" Grid.Column="1" Margin="0,89,0,0" Grid.Row="2" VerticalContentAlignment="Center" Foreground="Black">
+                <Label.Background>
+                    <SolidColorBrush Color="Transparent"/>
+                </Label.Background>
+            </Label>
+            <Label x:Name="labTemp" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.497,0.49" FontFamily="Microsoft Sans Serif" FontSize="30" Width="214" Opacity="0.7" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,132,0,0" Grid.Column="1" Grid.Row="2" Height="44" Background="#FF4F4D5C"/>
+            <Label Content="WILGOTNOŚĆ" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Opacity="0.6" FontSize="25" Margin="475,181,0,0" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="270" Height="47"/>
+            <Label Content="CIŚNIENIE" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" FontSize="25" Opacity="0.6" Width="261" HorizontalContentAlignment="Center" Margin="214,89,0,0" Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center"/>
+            <Label x:Name="labHumidity" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Opacity="0.7" Width="270" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" FontSize="30" Margin="475,228,0,0" Grid.Column="1" Grid.Row="2" Height="44" Background="#FF4F4D5C"/>
+            <Label x:Name="labPressure" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="44" Width="251" FontSize="30" Opacity="0.7" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="219,132,0,0" Grid.Column="1" Grid.Row="2" Background="#FF4F4D5C"/>
+            <Label Content="PRĘDKOŚĆ WIATRU" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="38" Width="270" FontSize="25" Opacity="0.6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="475,89,0,0" Grid.Column="1" Grid.Row="2"/>
+            <Label x:Name="labWind" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="44" Width="270" FontSize="30" Opacity="0.7" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="475,132,0,0" Grid.Column="1" Grid.Row="2" Background="#FF4F4D5C"/>
+            <Label Content="ZACHMURZENIE" HorizontalAlignment="Left" Margin="219,181,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Opacity="0.6" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="47" Width="251" FontSize="25"/>
+            <Label x:Name="labTempFeelsLike" Content="" HorizontalAlignment="Left" Margin="1,228,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="44" Width="213" Foreground="White" Opacity="0.7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Grid.Column="1" Background="#FF4F4D5C"/>
+            <Label x:Name="labTime" Content="" HorizontalAlignment="Left" Margin="618,0,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Height="56" Width="127" Foreground="White" Opacity="0.7" Grid.Column="1" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="ODCZ. TEMP." HorizontalAlignment="Left" Margin="1,181,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" Opacity="0.6" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="47" Width="213" FontSize="25"/>
+            <Grid Margin="10,10,10,446" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Warszawa" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labWarszawaTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,89,10,367" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Wrocław" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labWroclawTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,169,10,287" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Gdańsk" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labGdanskTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,248,10,208" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Kraków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labKrakowTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,328,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Poznań" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labPoznanTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Grid Margin="10,407,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" VerticalAlignment="Top" Width="160" CornerRadius="5" Opacity="0.7" Grid.RowSpan="2">
+                        <Border.Background>
+                            <SolidColorBrush Color="#FF8A8992" Opacity="0.4"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="Rzeszów" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Background="Transparent" Grid.RowSpan="2">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="labRzeszowTemp" Content="" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Microsoft Sans Serif" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" Grid.RowSpan="2">
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" Opacity="0.7"/>
+                        </Label.Foreground>
+                    </Label>
+                </Grid>
+            </Grid>
+            <Border BorderBrush="#FF4F4D5C" BorderThickness="5" Grid.Column="1" Margin="234,0,0,464" Grid.Row="2" Width="251" CornerRadius="5" Background="#FF4F4D5C" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label x:Name="labCity" VerticalAlignment="Center" RenderTransformOrigin="-0.097,-0.507" FontFamily="Microsoft Sans Serif" FontSize="25" HorizontalContentAlignment="Center" Height="54" VerticalContentAlignment="Center" Margin="-5,-3,-5,-5" HorizontalAlignment="Left" Width="251" Background="#00000000" BorderThickness="0" Opacity="0.7" FontWeight="Bold"/>
+            </Border>
+            <Button x:Name="btnRefresh" Content="Odswież" HorizontalAlignment="Left" Margin="60,476,0,0" VerticalAlignment="Top" Width="75" Click="btnRefresh_Click" FontFamily="Microsoft Sans Serif" Height="24" Opacity="0.5" BorderThickness="0" FontWeight="Bold" Grid.Row="2"/>
+            <Button x:Name="btnSave" Content="ZAPISZ" HorizontalAlignment="Left" Margin="214,407,0,0" VerticalAlignment="Top" Width="298" Click="btnSave_Click" FontFamily="Microsoft Sans Serif" Height="73" Opacity="0.5" BorderThickness="0" Grid.Row="2" Grid.Column="1" FontSize="36"/>
+        </Grid>
+
+
+
+    </Border>
+</Window>
